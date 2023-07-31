@@ -1,0 +1,115 @@
+<div class="container">
+    <h2><span class="glyphicon glyphicon-user"></span> Customer Information</h2>
+    <div class="row">
+        <div class="col-sm-4">
+            <button class="design" (click)="Customerlist()"><span class="glyphicon glyphicon-th-list"></span>Customer
+                Details</button>
+        </div>
+        <div class="col-sm-4">
+            <button class="design"><span class="glyphicon glyphicon-tags"></span> Customer Orders</button>
+        </div>
+
+        <div class="col-sm-4">
+            <button class="design" (click)="ChangeToEdit()"><span class="glyphicon glyphicon-edit"></span> Edit
+                Customer</button>
+        </div>
+    </div>
+    <div style="padding-top: 30px;">
+    <form action="/action_page.php" *ngIf="mode=='create'">
+        <div class="form-group">
+            <label for="email">Firstname</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter Firstname" name="email"
+                [(ngModel)]="customer.firstname">
+        </div>
+        <div class="form-group">
+            <label for="pwd">LastName</label>
+            <input type="text" class="form-control" id="pwd" placeholder="Enter lastname" name="pwd"
+                [(ngModel)]="customer.lastname">
+        </div>
+        <div class="form-group">
+            <label for="email">Address</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter Address" name="email"
+                [(ngModel)]="customer.address">
+        </div>
+        <div class="form-group">
+            <label for="pwd">City</label>
+            <input type="text" class="form-control" id="pwd" placeholder="Enter city" name="pwd"
+                [(ngModel)]="customer.city">
+        </div>
+        <div class="form-group">
+            <label for="pwd">State</label>
+            <input type="text" class="form-control" id="pwd" placeholder="Enter State" name="pwd"
+                [(ngModel)]="customer.state">
+        </div>
+        <div style="float: right;">
+            <button class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-success" (click)="SubmitData()">Insert</button>
+        </div>
+    </form>
+    <form action="/action_page.php" *ngIf="mode=='edit'">
+        <div class="form-group">
+            <label for="email">Firstname</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter Firstname" name="email"
+                [(ngModel)]="customer.firstname">
+        </div>
+        <div class="form-group">
+            <label for="pwd">LastName</label>
+            <input type="text" class="form-control" id="pwd" placeholder="Enter lastname" name="pwd"
+                [(ngModel)]="customer.lastname">
+        </div>
+        <div class="form-group">
+            <label for="email">Address</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter Address" name="email"
+                [(ngModel)]="customer.address">
+        </div>
+        <div class="form-group">
+            <label for="pwd">City</label>
+            <input type="text" class="form-control" id="pwd" placeholder="Enter city" name="pwd"
+                [(ngModel)]="customer.city">
+        </div>
+        <div class="form-group">
+            <label for="pwd">State</label>
+            <input type="text" class="form-control" id="pwd" placeholder="Enter State" name="pwd"
+                [(ngModel)]="customer.state">
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <button class="btn btn-danger" (click)="DeleteCustomer()">Delete</button>
+            </div>
+            <div class="col-sm-5"></div>
+            <div class="col-sm-3" style="float: right;">
+                <button class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-success" (click)="SubmitData()">Update</button>
+            </div>
+
+
+        </div>
+    </form>
+
+    <div *ngIf="mode=='list'">
+        <table class="table">
+            <thead>
+
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of customrList ">
+
+                    <td>{{user.firstname}}</td>
+                    <td>{{user.lastname}}</td>
+                    <td>{{user.address}}</td>
+                    <td>{{user.city}}</td>
+                    <td>{{user.state}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
